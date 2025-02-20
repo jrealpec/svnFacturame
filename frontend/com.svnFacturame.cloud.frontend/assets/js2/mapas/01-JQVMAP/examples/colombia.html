@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <title>JQVMap - Colombia Map</title>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+
+    <link href="../dist/jqvmap.css" media="screen" rel="stylesheet" type="text/css"/>
+
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="../dist/jquery.vmap.js"></script>
+    <script type="text/javascript" src="../dist/maps/jquery.vmap.colombia.js" charset="utf-8"></script>
+
+    <script>
+	
+		  function escapeXml(string) {
+        return string.replace(/[<>]/g, function (c) {
+          switch (c) {
+            case '<': return '\u003c';
+            case '>': return '\u003e';
+          }
+        });
+      }
+	  
+	  
+      jQuery(document).ready(function () {
+	  var pins = {
+          CO-BOY: escapeXml('<div class="map-pin red"><span></span></div>'),
+          ve: escapeXml('<div class="map-pin blue"><span>..</span></div>'),
+          ar: escapeXml('<div class="map-pin purple"><span></span></div>')
+        };
+        jQuery('#vmap').vectorMap({
+          map: 'co_mill',
+		  pins: pins,
+          onRegionClick: function (element, code, region) {
+            var message = 'You clicked "'
+              + region
+              + '" which has the code: '
+              + code.toUpperCase();
+
+            alert(message);
+          },
+		     backgroundColor: '#0071E1',
+          color: '#ffffff',
+          hoverOpacity: 0.7,
+		    borderWidth: 0.25,
+          selectedColor: '#0B5500',
+          enableZoom: true,
+          showTooltip: true,
+	//	     showLabels: true,
+
+         scaleColors: ['#E3FFDF', '#1ACC00'],
+          values: sample_data,
+          normalizeFunction: 'polynomial'
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <div id="vmap" style="width: 400px; height: 400px;"></div>
+  </body>
+</html>

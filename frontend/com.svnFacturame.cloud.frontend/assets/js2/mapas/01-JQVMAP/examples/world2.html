@@ -1,0 +1,366 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <title>Sistemas Agropecuarios</title>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+     <link rel="shortcut icon" type="image/ico" href="favicon.ico"/>
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link href="../dist/jqvmap.css" media="screen" rel="stylesheet" type="text/css"/>
+
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="../dist/jquery.vmap.js"></script>
+    <script type="text/javascript" src="../dist/maps/jquery.vmap.world.js" charset="utf-8"></script>
+    <script type="text/javascript" src="js/jquery.vmap.sampledata.js"></script>
+	  <link href="../dist/jqvmap.css" media="screen" rel="stylesheet" type="text/css"/>
+
+	  
+	   <style>
+      html, body {
+        padding: 0;
+        margin: 0;
+        width: 100%;
+        height: 100%;
+      }
+      #vmap {
+        width: 100%;
+        height: 100%;
+        background-color: red;
+        -webkit-tap-highlight-color: rgba(0,0,0,0);
+      }
+	  
+	   @media only screen and (min-width: 320px) {
+        .jqvmap-pin {
+          font-size: 6px;
+        }
+      }
+
+      @media only screen and (min-width: 480px) {
+        .jqvmap-pin {
+          font-size: 8px;
+        }
+      }
+
+      @media only screen and (min-width: 640px) {
+        .jqvmap-pin {
+          font-size: 10px;
+        }
+      }
+
+      @media only screen and (min-width: 800px) {
+        .jqvmap-pin {
+          font-size: 12px;
+        }
+      }
+
+      @media only screen and (min-width: 1024px) {
+        .jqvmap-pin {
+          font-size: 14px;
+        }
+      }
+	  
+	  .map-pin {
+        width: 64px;
+        height: 50px;
+        position: absolute;
+        top: -25px;
+        left: -32px;
+        background-size: 32px 32px;
+        background-repeat: no-repeat;
+        text-align: center;
+        background-position: top center;
+        color: #888;
+        font-weight: 500;
+        font-size: 14px;
+      }
+
+      .map-pin span {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        text-align: center;
+        left: 0;
+      }
+
+      .red {
+        background-image: url('images/marker/red.png');
+      }
+
+      .blue {
+        background-image: url('images/marker/blue.png');
+      }
+
+      .purple {
+        background-image: url('images/marker/purple.png');
+      }
+
+      /* Setup basic CSS for Label */
+      .jqvmap-pin {
+        font-family: "Helvetica Neue Light", "HelveticaNeue-Light", "Helvetica Neue", Calibri, Helvetica, Arial, sans-serif;
+        cursor: default;
+      }
+
+      /* Reposition Labels that are not quite right ( labels are centered in shape, and sometimes need tweaking ) */
+
+      #jqvmap1_fl_pin {
+        margin-left: 5%;
+      }
+	  
+	  
+	  body {background-color: #F0F8FF;}
+h2  {color: blue;text-align: center;border:2px ;}
+p    {color: red;}
+
+</style>
+    
+    <script>
+function escapeXml(string) {
+	return string.replace(/[<>]/g, function (c) {
+		switch (c) {
+		case '<':
+			return '\u003c';
+		case '>':
+			return '\u003e';
+		}
+	});
+}
+
+jQuery(document).ready(function () {
+	var pins = {
+		ar: escapeXml('<div class="map-pin red"><span></span></div>'),
+		bo: escapeXml('<div class="map-pin red"><span></span></div>'),
+		br: escapeXml('<div class="map-pin red"><span></span></div>'),
+		co: escapeXml('<div class="map-pin blue"><span></span></div>'),
+		cl: escapeXml('<div class="map-pin red"><span>.</span></div>'),
+		cr: escapeXml('<div class="map-pin red"><span></span></div>'),
+		cu: escapeXml('<div class="map-pin red"><span></span></div>'),
+		do : escapeXml('<div class="map-pin red"><span></span></div>'),
+		ec: escapeXml('<div class="map-pin red"><span></span></div>'),
+		es: escapeXml('<div class="map-pin red"><span></span></div>'),
+		us: escapeXml('<div class="map-pin red"><span></span></div>'),
+		gb: escapeXml('<div class="map-pin red"><span></span></div>'),
+		gt: escapeXml('<div class="map-pin red"><span></span></div>'),
+		hn: escapeXml('<div class="map-pin red"><span></span></div>'),
+		it: escapeXml('<div class="map-pin purple"><span></span></div>'),
+		mx: escapeXml('<div class="map-pin red"><span></span></div>'),
+		ni: escapeXml('<div class="map-pin red"><span></span></div>'),
+		pa: escapeXml('<div class="map-pin red"><span></span></div>'),
+		pe: escapeXml('<div class="map-pin red"><span></span></div>'),
+		py: escapeXml('<div class="map-pin red"><span></span></div>'),
+		sv: escapeXml('<div class="map-pin red"><span></span></div>'),
+		uy: escapeXml('<div class="map-pin red"><span></span></div>'),
+		ve: escapeXml('<div class="map-pin red"><span></span></div>')
+
+	};
+
+	jQuery('#vmap').vectorMap({
+		map: 'world_en',
+		pins: pins,
+		//   pinMode: 'content',
+
+
+		onRegionClick: function (element, code, region) {
+			var message = 'Usted Selecciono "'
+				 + region
+				 + '" Con Código: '
+				 + code.toUpperCase();
+			alert(message);
+			if (code.toUpperCase() == "CO") {
+				// Colombia: Departamento Administrativo Nacional de Estadísticas (DANE)
+				window.open("http://www.dane.gov.co");
+				window.open("http://www.minagricultura.gov.co");
+				window.open("http://www.agronet.gov.co");
+				window.open("http://www.banrep.gov.co/es/-estadisticas");
+
+			}
+			if (code.toUpperCase() == "AR") {
+				// Argentina: Instituto Nacional de Estadísticas y Censos (INDEC)
+
+				window.open("http://www.indec.gov.ar");
+
+				window.open("https://datos.magyp.gob.ar/");
+				window.open("http://www.senasa.gob.ar/");
+				window.open("http://magya.cba.gov.ar/Default.aspx");
+
+			}
+			if (code.toUpperCase() == "BO") {
+				// Bolivia: Instituto Nacional de Estadísticas (INE)
+				window.open("http://www.ine.gob.bo");
+				window.open("http://www.bcb.gob.bo/");
+				window.open("http://www.ruralytierras.gob.bo");
+				window.open("http://www.boliviarural.org/");
+			}
+			if (code.toUpperCase() == "BR") {
+				// Brasil: Instituto Brasilero de Geografía y Estadística (IBGE)
+				window.open("www.ibge.gov.br");
+				window.open("http://www.agricultura.gov.br/");
+				window.open("https://www.embrapa.br/");
+				window.open("http://www.bcb.gov.br/");
+			}
+			if (code.toUpperCase() == "CL") {
+				// Chile: Instituto Nacional de Estadísticas (INE)
+				window.open("http://www.ine.cl/");
+				window.open("http://www.minagri.gob.cl/");
+				window.open("http://si3.bcentral.cl/Siete/secure/cuadros/home.aspx");
+			}
+			if (code.toUpperCase() == "CR") {
+				// Costa Rica: Instituto Nacional de Estadísticas y Censos (INEC)
+				window.open("http://www.inec.go.cr");
+				window.open("http://www.mag.go.cr/");
+				window.open("http://www.bccr.fi.cr/");
+			}
+			if (code.toUpperCase() == "CU") {
+				// Cuba: Oficina Nacional de Estadísticas (ONE)
+				window.open("www.one.cu");
+				window.open("http://www.cubagob.cu/otras_info/estadisticas.htm");
+				window.open("http://www.bc.gob.cu/");
+				window.open("https://www.ecured.cu/");
+			}
+
+			if (code.toUpperCase() == "EC") {
+				//Ecuador: Instituto Nacional de Estadísticas y Censos (INEC)
+				window.open("www.inec.gob.ec");
+				window.open("http://sinagap.agricultura.gob.ec/");
+				window.open("http://www.ecuadorencifras.gob.ec/");
+				window.open("http://www.bce.fin.ec/");
+				window.open("http://www.agricultura.gob.ec/");
+
+			}
+			if (code.toUpperCase() == "US") {
+				//EEUU
+				window.open("https://www.usda.gov/");
+				window.open("http://interwp.cepal.org/cepalstat/WEB_CEPALSTAT/perfilesNacionales.asp?idioma=e");
+				window.open("http://www.bls.gov/home.htm");
+				window.open("http://www.federalreserve.gov/");
+
+			}
+
+			if (code.toUpperCase() == "SV") {
+				//El Salvador: Dirección General de Estadísticas y Censos (DIGESTYC)
+				window.open("http://www.digestyc.gob.sv");
+				window.open("http://www.mag.gob.sv/");
+				window.open("http://www.minec.gob.sv/default.asp?id=56&mnu=56");
+				window.open("http://www.bcr.gob.sv/");
+
+			}
+			if (code.toUpperCase() == "GT") {
+				//Guatemala: Instituto Nacional de Estadística (INE)
+				window.open("http://www.ine.gob.gt");
+				window.open("http://estadistica.mineduc.gob.gt/");
+				window.open("http://www.segeplan.gob.gt/ine/index.htm");
+				window.open("http://www.banguat.gob.gt/");
+
+			}
+
+			if (code.toUpperCase() == "HN") {
+				//Honduras: Instituto Nacional de Estadísticas (INE)
+				window.open("http://www.ine.gob.hn");
+				window.open("http://www.bch.hn/");
+
+			}
+			if (code.toUpperCase() == "MX") {
+				//Mexico: Instituto Nacional de Estadística y Geografía (INEGI)
+				window.open("http://www.inegi.org.mx");
+				window.open("http://www.gob.mx/siap/");
+				window.open("http://www.inegi.gob.mx");
+				window.open("http://www.banxico.org.mx/");
+				window.open("http://www.gob.mx/sagarpa");
+
+			}
+			if (code.toUpperCase() == "NI") {
+				//Nicaragua: Instituto Nacional de Información de Desarrollo (INIDE)
+				window.open("http://www.inide.gob.ni");
+				window.open("http://www.inec.gob.ni/");
+				window.open("http://www.bcn.gob.ni/");
+
+			}
+			if (code.toUpperCase() == "PA") {
+				//Panama: Instituto Nacional de Estadísticas y Censos (INEC)
+				window.open("www.contraloria.gob.pa");
+
+			}
+			if (code.toUpperCase() == "PY") {
+				//Paraguay: Dirección General de Estadísticas, Encuestas y Censos (DGEEC)
+				window.open("http://www.dgeec.gov.py");
+				window.open("http://www.bcp.gov.py/");
+
+			}
+			if (code.toUpperCase() == "PE") {
+				//Perú: Instituto Nacional de Estadísticas e Informática (INEI)
+				window.open("http://www.inei.gob.pe");
+				window.open("http://www.minagri.gob.pe/");
+				window.open("http://www.bcrp.gob.pe/");
+				window.open("http://www.agrorural.gob.pe");
+
+			}
+			if (code.toUpperCase() == "DO") {
+				//República Dominicana: Oficina Nacional de Estadística (ONE)
+				window.open("http://www.one.gob.do");
+				window.open("http://www.bancentral.gov.do/");
+
+			}
+			if (code.toUpperCase() == "UY") {
+				//Uruguay: Instituto Nacional de Estadísticas (INE)
+				window.open("http://www.ine.gub.uy");
+				window.open("http://www.bcu.gub.uy/Paginas/Default.aspx");
+
+			}
+			if (code.toUpperCase() == "VE") {
+				//Venezuela: Instituto Nacional de Estadística (INE)
+				window.open("http://www.ine.gov.ve");
+
+			}
+			if (code.toUpperCase() == "ES") {
+				//España: Instituto Nacional de Estadística
+				window.open("http://www.ine.es/");
+				window.open("http://www.bde.es/");
+				window.open("http://www.mapama.gob.es");
+
+			}
+			if (code.toUpperCase() == "GB") {
+				//Reino Unido: Instituto Nacional de Estadística
+				window.open("http://www.statistics.gov.uk/");
+				window.open("http://www.bankofengland.co.uk/");
+				window.open("http://www.mapama.gob.es");
+
+			}
+			if (code.toUpperCase() == "IT") {
+
+				window.open("http://www.fao.org/statistics/databases/es/");
+				window.open("https://data.oecd.org/agroutput/crop-production.htm");
+				window.open("http://www.fao.org/faostat/es/#data/TA/visualize");
+				window.open("http://www.fao.org/faostat/es/#data");
+				window.open("http://www.fao.org/faostat/es/#home");
+				http: //ref.data.fao.org/software-release
+
+				window.open("http://appsso.eurostat.ec.europa.eu/nui/show.do?dataset=apro_acs_a&lang=en");
+
+			}
+
+		},
+		backgroundColor: '#0071E1',
+		color: '#ffffff',
+		hoverOpacity: 0.7,
+		borderWidth: 0.25,
+		selectedColor: '#0B5500',
+		enableZoom: true,
+		showTooltip: true,
+		//	     showLabels: true,
+
+		scaleColors: ['#E3FFDF', '#1ACC00'],
+		values: sample_data,
+		normalizeFunction: 'polynomial'
+	});
+});
+ </script>
+
+    
+  </head>
+  <body>
+  <h2 style="color:blue;" id="mapa">Mapa Interactivo Mundial de Sistemas de Información Agropecuarios</h2>
+	    <div id="vmap" ></div>
+  </body>
+</html>

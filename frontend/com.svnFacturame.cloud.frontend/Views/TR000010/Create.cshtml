@@ -1,0 +1,290 @@
+﻿@using com.svnFacturame.cloud.frontend.core.Controllers;
+@using System.Configuration;
+@model com.svnFacturame.cloud.frontend.core.Models.TR000010;
+@{
+    ViewData["Title"] = "Create";
+}
+<script type="text/javascript" src="@Url.Content("~/")assets/js2/jquery-placeholder/jquery.placeholder.min.js"></script>
+<script type="text/javascript" src="@Url.Content("~/")assets/js2/jquery-validation/js/jquery.validate.min.js"></script>
+<script type="text/javascript" src="@Url.Content("~/")assets/js2/jquery-form/jquery.form.js"></script>
+<script type="text/javascript" src="@Url.Content("~/")assets/js2/bootstrap-wysiwyg/js/bootstrap-wysiwyg.js"></script>
+<script type="text/javascript" src="@Url.Content("~/")assets/js2/jquery-hotkeys/jquery.hotkeys.js"></script>
+<script type="text/javascript">
+    $(function () {
+        $(document).on("focus", ".datepicker", function () {
+            $(this).datepicker();
+        });
+        _CargaInicial();
+    });
+    function _CargaInicial() {
+        $('#chkbox2').attr('disabled', false);
+        $('#chkbox2').prop('checked', false);
+    }
+</script>
+<ol class="breadcrumb">
+    <li class="active"><i class="fas fa-home fa-fw"></i>@Convert.ToString(string.Format("{0:MMMM dd, yyyy}", DateTime.Now.ToUniversalTime().AddHours(-5)))</li>
+</ol>
+<div class="page-content">
+    <button type="submit" name="submit" id="submit" style="visibility: hidden"></button>
+    <h3 class="header smaller lighter ">Propiedades del Documento</h3>
+    <div class="row">
+        <div class="col-md-9">
+            <div class="row-fluid show-grid separator">
+                <form class="form-horizontal" role="form">
+                    @*Inicio del Contenido*@
+                    <div class="form-group">
+                        <div class="row-fluid">
+                            <div class="col-xs-4 col-md-4" onclick="saveCacheStatus()">
+                                <label class="control-label" style="color: #991F05;">1.Oficina Gestión:</label>
+                                <div class="">
+                                    @Html.DropDownListFor(item => item.Id, new SelectList(ViewBag.ListaVentanillas, "ID", "NOMBRE"), "Seleccione", new { @class = "chosen-select", id = "dllVentanilla", @style = "width:100%;" })
+                                </div>
+                            </div>
+                            <div class="col-xs-4 col-md-4" onclick="saveCacheStatus()">
+                                <label class="control-label" style="color: #991F05;">2.Clase documento:</label>
+                                <div class="">
+                                    @Html.DropDownListFor(item => item.Id, new SelectList(ViewBag.ListaClaseDocumentos, "ID", "NOMBRE"), "Seleccione", new { @class = "chosen-select", id = "dllClaseDoc", @style = "width:100%;" })
+                                </div>
+                            </div>
+                            <div class="col-xs-4 col-md-4" onclick="saveCacheStatus()">
+                                <label class="control-label" style="color: #991F05;">3.Tipo de documento (incapacidad):</label>
+                                <div class="">
+                                    @Html.DropDownListFor(item => item.Id, new SelectList(ViewBag.ListaTipoDocumentos, "ID", "NOMBRE"), "Seleccione", new { @class = "chosen-select", id = "dllTipoDocumentos", @style = "width:100%;" })
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="form-group">
+                        <div class="row-fluid">
+                            <div class="col-xs-4 col-md-4" onclick="saveCacheStatus()">
+                                <label class="control-label" style="color: #991F05;">4. Número Externo:</label>
+                                <div class="">
+                                    @Html.TextBoxFor(item => item.Id, new { @id = "NUMEROEXTERNO", @style = "width:100%;" })
+                                </div>
+                            </div>
+
+                            <div class="col-xs-4 col-md-4" onclick="saveCacheStatus()">
+                                <label class="control-label" style="color: #991F05;">5. Fecha expedición:@Html.CheckBoxFor(item => item.Status, new { id = "chkbox2", @disabled = "disabled" })</label>
+                                <div class="">
+                                    @Html.TextBoxFor(item => item.CreationDate, new { @id = "FecExped", @readonly = "readonly", @class = "datepicker NotEnter", @data_date_format = "dd-mm-yyyy", @minDate = "0" })
+                                </div>
+                            </div>
+
+@*                             <div class="col-xs-4 col-md-4" onclick="saveCacheStatus()">
+                                <label class="control-label" style="color: #991F05;">6.Motivo del documento:</label>
+                                <div class="">
+                                    @Html.DropDownListFor(item => item.Id, new SelectList(ViewBag.ListaMotivoDocumentos, "ID", "NOMBRE"), "Seleccione", new { @class = "chosen-select", id = "dllMotivoDocumentos", @style = "width:100%;" })
+                                </div>
+                            </div> *@
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="row-fluid">
+                            <div class="col-xs-4 col-md-4" onclick="saveCacheStatus()">
+                                <label class="control-label" style="color: #991F05;">7.Pais:</label>
+                                <div class="">
+                                    @Html.DropDownListFor(item => item.Id, new SelectList(ViewBag.ListaPaises, "ID", "NOMBRE"), "Seleccione", new { @class = "chosen-select", id = "dllPais", @style = "width:100%;" })
+                                </div>
+                            </div>
+                            <div class="col-xs-4 col-md-4" onclick="saveCacheStatus()">
+                                <label class="control-label" style="color: #991F05;">8.Departamento:</label>
+                                <div class="">
+                                    @Html.DropDownListFor(item => item.Id, new SelectList(ViewBag.ListaDepto, "ID", "NOMBRE"), "Seleccione", new { @class = "chosen-select", id = "dllDepto", @style = "width:100%;" })
+                                </div>
+                            </div>
+                            <div class="col-xs-4 col-md-4" onclick="saveCacheStatus()">
+                                <label class="control-label" style="color: #991F05;">9.Ciudad:</label>
+                                <div class="">
+                                    @Html.DropDownListFor(item => item.Id, new SelectList(ViewBag.ListaCiudades, "ID", "NOMBRE"), "Seleccione", new { @class = "chosen-select", id = "dllCiudad", @style = "width:100%;" })
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <div class="alert alert-success">
+                <small>
+                    Radicado No.:  <strong>@Html.DisplayFor(item => item.NumRadicado, new { @readonly = "readonly" })</strong> <br>
+                    Fecha : <strong>@Html.DisplayFor(item => item.CreationDate, new { @readonly = "readonly", @class = "date" })</strong><br>
+                    Estado Actual: <strong>@Html.DisplayFor(item => item.Name_TS_ESTADO, new { @readonly = "readonly" })</strong><br>
+                </small>
+                <div class="alert alert-success">
+                    <small>
+                        Creado Por: <strong>@Html.DisplayFor(item => item.Name_Usuario, new { @readonly = "readonly" })</strong><br>
+                        @Html.HiddenFor(item => item.Name_Usuario)
+                        Nombre: <strong>@Html.DisplayFor(item => item.Name_CreatedBy, new { @readonly = "readonly" })</strong><br>
+                        @Html.HiddenFor(item => item.Name_CreatedBy)
+                        Fecha Creación:<strong>@Html.DisplayFor(item => item.CreationDate, new { @readonly = "readonly", @class = "date" })</strong><br>
+                        Cargo:<strong>@Html.DisplayFor(item => item.Name_Cargo, new { @readonly = "readonly" })</strong> <br>
+                        @Html.HiddenFor(item => item.Name_Cargo)
+                        Entidad/Area:<strong> @Html.DisplayFor(item => item.Name_Dependencia, new { @readonly = "readonly" })</strong>
+                        @Html.HiddenFor(item => item.Name_Dependencia)
+                        @Html.HiddenFor(item => item.ID_TS_ESTADO, new { @id = "EstadoFormulario" })
+                        <br />
+                    </small>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <h3 class="header smaller lighter ">Propiedades de la Incapacidad/licencia</h3>
+    <div class="row">
+        <div class="col-md-9">
+            <div class="row-fluid show-grid separator">
+                <div class="col-sm-12">
+                    <div class="row-fluid show-grid">
+                        <div class="col-xs-4 col-md-4" onclick="saveCacheStatus()">
+                            <label class="control-label" style="color: #991F05;">10.Tipo de remisión:</label>
+                            <div class="">
+                                @Html.DropDownListFor(item => item.Id, new SelectList(ViewBag.ListaTipoRemision, "ID", "NOMBRE"), "Seleccione", new { @class = "chosen-select", id = "dllTipoRemision", @style = "width:100%;" })
+                            </div>
+                        </div>
+
+                        <div class="col-xs-4 col-md-4" onclick="saveCacheStatus()">
+                            <label class="control-label" style="color: #991F05;">11. Diagnostico CIE10: </label>
+                            <div class="">
+                                @Html.DropDownListFor(item => item.Id, new SelectList(ViewBag.ListaDiagnosticosCIE10, "ID", "NOMBRE"), "Seleccione", new { @class = "chosen-select", id = "dllDiagnosticoCIE10", @style = "width:100%;" })
+                            </div>
+                        </div>
+
+                        <div class="col-xs-4 col-md-4" onclick="saveCacheStatus()">
+                            <label class="control-label" style="color: #991F05;">12. Categoria CIE10: </label>
+                            <div class="">
+                                @Html.DropDownListFor(item => item.Id, new SelectList(ViewBag.ListaCategoriasCIE10, "ID", "NOMBRE"), "Seleccione", new { @class = "chosen-select", id = "dllCategoriaCIE10", @style = "width:100%;" })
+                            </div>
+                        </div>
+
+                        <div class="col-xs-4 col-md-4" onclick="saveCacheStatus()">
+                            <label class="control-label" style="color: #991F05;">13. Grupo CIE10:</label>
+                            <div class="">
+                                @Html.DropDownListFor(item => item.Id, new SelectList(ViewBag.ListaGrupoCIE10, "ID", "NOMBRE"), "Seleccione", new { @class = "chosen-select", id = "dllGrupoCIE10", @style = "width:100%;" })
+                            </div>
+                        </div>
+
+                        <div class="col-xs-4 col-md-4" onclick="saveCacheStatus()">
+                            <label class="control-label" style="color: #991F05;">14. SubGrupo CIE10:</label>
+                            <div class="">
+                                @Html.DropDownListFor(item => item.Id, new SelectList(ViewBag.ListaSubGrupoCIE10, "ID", "NOMBRE"), "Seleccione", new { @class = "chosen-select", id = "dllSubGrupoCIE10", @style = "width:100%;" })
+                            </div>
+                        </div>
+                        <div class="col-xs-4 col-md-4" onclick="saveCacheStatus()">
+                            <label class="control-label" style="color: #991F05;">15. Dias incapacidad:</label>
+                            <div class="">
+                                @Html.TextBoxFor(item => item.QtyDias, new {@id="NumQtyDias", @style = "width:100%;" })
+                            </div>
+                        </div>
+
+                        <div class="col-xs-4 col-md-4" onclick="saveCacheStatus()">
+                            <label class="control-label" style="color: #991F05;">16. Fecha inicio incapacidad:</label>
+                            <div class="">
+                                @Html.TextBoxFor(item => item.FechaIni, new { @id = "FecIniInc", @style = "width:100%;" })
+                            </div>
+                        </div>
+
+                        <div class="col-xs-4 col-md-4" onclick="saveCacheStatus()">
+                            <label class="control-label" style="color: #991F05;">17. Fecha fin incapacidad:</label>
+                            <div class="">
+                                @Html.TextBoxFor(item => item.FechaFin, new { @id = "FecFinInc", @style = "width:100%;" })
+                            </div>
+                        </div>
+
+                        <div class="col-xs-4 col-md-4" onclick="saveCacheStatus()">
+                            <label class="control-label" style="color: #991F05;">18. Detalle:</label>
+                            <div class="">
+                                @* @Html.TextBoxFor(item => item.Detalle, new { @id = "DetInc", @style = "width: 400px; height: 200px;" }) *@
+                                @Html.TextAreaFor(item => item.Detalle, new { @id = "DetInc", @rows = 10, @cols = 40 })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <h3 class="header smaller lighter ">Afiliados/Entidades</h3>
+    <div class="row">
+        <div class="row-fluid show-grid separator">
+            <div class="col-sm-12">
+                <div class="row-fluid">
+                    <div class="col-sm-12">
+                        <div class="row-fluid show-grid">
+                            <div class="col-sm-12" style="color: #991F05;">
+                                <p>
+                                    <strong>20. Entidad/Dependencia:</strong>
+                                    @Html.DropDownListFor(item => item.Id, new SelectList(ViewBag.ListaDependientes, "ID", "NOMBRE"), "-Seleccione-", new { @class = "chosen-select", id = "dllDependencia", style = "width:30%" })
+
+                                    <button class="btn btn-mini" id="btnDependencia" type="button" onclick="saveCacheStatus()" title="Agregar la entidad o dependencia.">Agregar</button>
+
+                                    <a href="javascript://" id="crearTerceroDe" role="button" class="btn btn-mini btn-primary" title="Crear tercero"><i class="icon icon-user icon-white"></i></a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="bs-docs-grid">
+            <div class="row-fluid show-grid separator">
+                <div class="col-sm-12">
+                    <div class="row-fluid">
+                        <div class="col-sm-12">
+                            <div class="row-fluid show-grid" style="color: #991F05;">
+                                <div class="col-sm-12">
+                                    <p>
+                                        <strong>21. Afiliados/Cotizantes:</strong>
+                                            @Html.DropDownListFor(item => item.Id, new SelectList(ViewBag.ListaCotizantes, "ID", "NOMBRE"), "-Seleccione-", new { @class = "chosen-select", id = "dllCotiza", style = "width:30%"})
+                                            <button class="btn btn-mini" id="ToCotizante" type="button" onclick="saveCacheStatus()" title="Agregar el cotizante.">Agregar</button>
+                                            <a href="javascript://" id="crearTerceroCotizante" role="button" class="btn btn-mini btn-primary" title="Crear tercero/cotizante"><i class="icon icon-user icon-white"></i></a>
+                                    </p>
+                                    <p>
+                                        <strong>22. Observaciones:</strong>
+                                            @Html.TextAreaFor(item => item.Observaciones, new { @id = "ObsInc", @rows = 10, @cols = 40 })
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button type="submit" name="submit" value="Radicar" id="ToolBar1" class="btn btn-info navToolBarEvent"><i class="icon-ok"></i> Guardar documento</button>
+    </div>
+@* @section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+} *@
+<script type="text/javascript">
+        function saveCacheStatus() {
+            $("#txtContenido").val($("#editor1").html());
+            $('#frmtype1').ajaxSubmit({
+                url: 'saveCache', type: 'post',
+                error: function (data) {
+                    GotoLogon();
+                }
+            });
+        }
+</script>
+@*Manejo de los CheckBox con referencia a otros objetos de solo lectura*@
+<script type="text/javascript">
+    $(function () {
+        $('#chkbox2').change(function (e) {
+            var today = new Date();
+            var dd = today.getDate();
+            today.setDate(dd - 1);
+            //$('#FecExped').val("");
+            $('#FecExped').attr('disabled', true);
+        });
+            $("#FecExped").on("keypress", function (event) {
+            if (event.which < 47 || event.which > 57) {
+                return false;
+            }
+        });
+    });
+</script>

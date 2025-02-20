@@ -1,0 +1,78 @@
+﻿@model IEnumerable<com.svnFacturame.cloud.frontend.core.Models.TG000004>
+@{
+    ViewData["Title"] = "Index";
+}
+<ol class="breadcrumb">
+    <li class="active"><i class="fas fa-home fa-fw"></i>@Convert.ToString(string.Format("{0:MMMM dd, yyyy}", DateTime.Now.ToUniversalTime().AddHours(-5)))</li>
+</ol>
+<div class="col-sm-12">
+    <div class="col-md-6">
+        <h3><strong>Listado de Departamentos</strong></h3>
+    </div>
+    <div class="col-md-6">
+        @Html.ActionLink("Add New", "Create", "TG000004", null, new { @class = "btn btn-primary buttonAdd" })
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="col-sm-9">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <div>
+                        <table id="tblTG000004List" class="display table table-bordered dataTable table-hover" cellspacing="0">
+                            <thead>
+                                <tr>
+                                    <th>CodDepto</th>
+                                    <th>Descripcion</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td class="align-middle">@item.CodDepto</td>
+                                        <td class="align-middle">@item.Name</td>
+                                        <td>
+                                            @Html.ActionLink("Edit", "Edit", new { Id = @item.Id }, new { @class = "btn btn-primary" })
+                                            @Html.ActionLink("Delete", "Delete", new { Id = @item.Id }, new { @class = "btn btn-danger", onclick = "return confirm('Are you sure you wish to delete this registry?');" })
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<style>
+    .imageStyle {
+        width: 100px;
+        height: 100px;
+    }
+
+    .buttonAdd {
+        float: right;
+        margin-top: 20px;
+    }
+</style>
+<link href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css" rel="stylesheet" />
+@section scripts {
+    <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $(function () {
+                $('#tblTG000004List').DataTable({
+                    "paging": true,
+                    "lengthChange": true,
+                    "searching": true,
+                    "ordering": true,
+                    "info": true,
+                    "autoWidth": true,
+                });
+            });
+
+        });
+    </script>
+}

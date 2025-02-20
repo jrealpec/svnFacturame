@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Colombia</title>
+  <link rel="stylesheet" media="all" href="../jquery-jvectormap.css"/>
+  <script src="assets/jquery-1.8.2.js"></script>
+  <script src="../jquery-jvectormap.js"></script>
+  <script src="../lib/jquery-mousewheel.js"></script>
+  <script src="../src/jvectormap.js"></script>
+  <script src="../src/abstract-element.js"></script>
+  <script src="../src/abstract-canvas-element.js"></script>
+  <script src="../src/abstract-shape-element.js"></script>
+  <script src="../src/svg-element.js"></script>
+  <script src="../src/svg-group-element.js"></script>
+  <script src="../src/svg-canvas-element.js"></script>
+  <script src="../src/svg-shape-element.js"></script>
+  <script src="../src/svg-path-element.js"></script>
+  <script src="../src/svg-circle-element.js"></script>
+  <script src="../src/svg-image-element.js"></script>
+  <script src="../src/svg-text-element.js"></script>
+  <script src="../src/vml-element.js"></script>
+  <script src="../src/vml-group-element.js"></script>
+  <script src="../src/vml-canvas-element.js"></script>
+  <script src="../src/vml-shape-element.js"></script>
+  <script src="../src/vml-path-element.js"></script>
+  <script src="../src/vml-circle-element.js"></script>
+  <script src="../src/vml-image-element.js"></script>
+  <script src="../src/map-object.js"></script>
+  <script src="../src/region.js"></script>
+  <script src="../src/marker.js"></script>
+  <script src="../src/vector-canvas.js"></script>
+  <script src="../src/simple-scale.js"></script>
+  <script src="../src/ordinal-scale.js"></script>
+  <script src="../src/numeric-scale.js"></script>
+  <script src="../src/color-scale.js"></script>
+  <script src="../src/legend.js"></script>
+  <script src="../src/data-series.js"></script>
+  <script src="../src/proj.js"></script>
+  <script src="../src/map.js"></script>
+      <script type="text/javascript" src="js/jquery.vmap.sampledata.js"></script>
+	   <link href="../dist/jqvmap.css" media="screen" rel="stylesheet" type="text/css"/>
+  <script src="assets/jquery-jvectormap-co-mill.js"></script>
+     <style>
+      html, body {
+        padding: 0;
+        margin: 0;
+        width: 100%;
+        height: 100%;
+      }
+      #vmap {
+        width: 100%;
+        height: 100%;
+        background-color: red;
+        -webkit-tap-highlight-color: rgba(0,0,0,0);
+      }
+	  
+	   @media only screen and (min-width: 320px) {
+        .jqvmap-pin {
+          font-size: 6px;
+        }
+      }
+
+      @media only screen and (min-width: 480px) {
+        .jqvmap-pin {
+          font-size: 8px;
+        }
+      }
+
+      @media only screen and (min-width: 640px) {
+        .jqvmap-pin {
+          font-size: 10px;
+        }
+      }
+
+      @media only screen and (min-width: 800px) {
+        .jqvmap-pin {
+          font-size: 12px;
+        }
+      }
+
+      @media only screen and (min-width: 1024px) {
+        .jqvmap-pin {
+          font-size: 14px;
+        }
+      }
+	  
+	  .map-pin {
+        width: 64px;
+        height: 50px;
+        position: absolute;
+        top: -25px;
+        left: -32px;
+        background-size: 32px 32px;
+        background-repeat: no-repeat;
+        text-align: center;
+        background-position: top center;
+        color: #888;
+        font-weight: 500;
+        font-size: 14px;
+      }
+
+      .map-pin span {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        text-align: center;
+        left: 0;
+      }
+
+      .red {
+        background-image: url('images/marker/red.png');
+      }
+
+      .blue {
+        background-image: url('images/marker/blue.png');
+      }
+
+      .purple {
+        background-image: url('images/marker/purple.png');
+      }
+
+      /* Setup basic CSS for Label */
+      .jqvmap-pin {
+        font-family: "Helvetica Neue Light", "HelveticaNeue-Light", "Helvetica Neue", Calibri, Helvetica, Arial, sans-serif;
+        cursor: default;
+      }
+
+      /* Reposition Labels that are not quite right ( labels are centered in shape, and sometimes need tweaking ) */
+
+      #jqvmap1_fl_pin {
+        margin-left: 5%;
+      }
+	  
+	  
+	  body {background-color: #F0F8FF;}
+h2  {color: blue;text-align: center;border:2px ;}
+p    {color: red;}
+
+</style>
+  <script>
+  
+    function escapeXml(string) {
+        return string.replace(/[<>]/g, function (c) {
+          switch (c) {
+            case '<': return '\u003c';
+            case '>': return '\u003e';
+          }
+        });
+      }
+  
+    $(function(){
+	
+	var pins = {
+          'CO-CAL': escapeXml('<div class="map-pin red"><span>....</span></div>'),
+          ve: escapeXml('<div class="map-pin blue"><span>..</span></div>'),
+          ar: escapeXml('<div class="map-pin purple"><span></span></div>')
+        };
+      var map,
+          markerIndex = 0,
+          markersCoords = {};
+
+      map = new jvm.Map({
+          map: 'co_mill',
+		  backgroundColor: '#0071E1',
+		    pins: pins,
+		  color: '#ffffff',
+		  		  onRegionClick: function (element, code, region) {
+            var message = 'Usted Selecciono "'
+              + region
+              + '" Con Codigo: '
+              + code.toUpperCase();
+            alert(message);
+		//	alert (code.toUpperCase());
+			if (code.toUpperCase()=="CO-CAL") 
+			{
+		//	 alert ('Entro a Colombia');
+			  //window.location = "http://www.semana.com";
+			  window.open("http://www.agronet.gov.co");
+			 }
+			},
+          hoverOpacity: 0.7,
+		    borderWidth: 0.25,
+          selectedColor: '#0B5500',
+          enableZoom: true,
+          showTooltip: true,
+		    scaleColors: ['#E3FFDF', '#1ACC00'],
+			 values: sample_data,
+          normalizeFunction: 'polynomial',
+          markerStyle: {
+            initial: {
+              fill: 'red'
+            }
+          },
+          container: $('#map'),
+          onMarkerTipShow: function(e, tip, code){
+            map.tip.text(markersCoords[code].lat.toFixed(2)+' '+markersCoords[code].lng.toFixed(2));
+          },
+          onMarkerClick: function(e, code){
+            map.removeMarkers([code]);
+            map.tip.hide();
+          }
+      });
+
+      $('#map').click(function(e){
+          var x = e.pageX - map.container.offset().left,
+              y = e.pageY - map.container.offset().top,
+              latLng = map.pointToLatLng(x, y),
+              targetCls = $(e.target).attr('class');
+
+          if (latLng && (!targetCls || targetCls.indexOf('jvectormap-marker') === -1)) {
+            markersCoords[markerIndex] = latLng;
+            map.addMarker(markerIndex, {latLng: [latLng.lat, latLng.lng]});
+            markerIndex += 1;
+          }
+      });
+      $('#map').bind('');
+    });
+  </script>
+</head>
+<body>
+ <h2 style="color:blue;" id="mapa">Mapa Interactivo Colombia</h2>
+	    <div id="map" style="width: 900px; height: 600px" ></div>
+</body>
+</html>

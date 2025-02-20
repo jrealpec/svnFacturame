@@ -1,0 +1,61 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.32228.430
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Backend", "Backend", "{E14CE390-36D9-42D9-8144-E4B1F7161A23}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{E7607C31-F336-4EF2-9294-CBCE30B24334}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Frontend", "Frontend", "{D741C4CD-1C89-48E5-9978-DC337F996352}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Docs", "Docs", "{F52DB938-4ACF-45F4-A89B-45350D562FFF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WebApi", "WebApi", "{6D1BD61D-EE4F-4F56-9D3E-1490992039CB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infraestructura", "Infraestructura", "{2172BFBE-A331-44AF-839B-002BDDA3D5C1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Domain", "Domain", "{C670BFF9-77C9-43C4-8744-E697A78EC50A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "com.svnFacturame.cloud.domain", "backend\com.svnFacturame.cloud.domain\com.svnFacturame.cloud.domain.csproj", "{F73F2F7E-6169-4B78-A37A-AB419E7FA703}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "com.svnFacturame.cloud.infraestructura.persistence", "backend\com.svnFacturame.cloud.infraestructura.persistence\com.svnFacturame.cloud.infraestructura.persistence.csproj", "{D653B101-9C9D-4E85-8F3C-5C21589B29E9}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "com.svnFacturame.cloud.Api", "backend\com.svnFacturame.cloud.Api\com.svnFacturame.cloud.Api\com.svnFacturame.cloud.Api.csproj", "{F82D2335-FBA2-49E5-B7B7-0A1D7B81BBA9}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F73F2F7E-6169-4B78-A37A-AB419E7FA703}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F73F2F7E-6169-4B78-A37A-AB419E7FA703}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F73F2F7E-6169-4B78-A37A-AB419E7FA703}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F73F2F7E-6169-4B78-A37A-AB419E7FA703}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D653B101-9C9D-4E85-8F3C-5C21589B29E9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D653B101-9C9D-4E85-8F3C-5C21589B29E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D653B101-9C9D-4E85-8F3C-5C21589B29E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D653B101-9C9D-4E85-8F3C-5C21589B29E9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F82D2335-FBA2-49E5-B7B7-0A1D7B81BBA9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F82D2335-FBA2-49E5-B7B7-0A1D7B81BBA9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F82D2335-FBA2-49E5-B7B7-0A1D7B81BBA9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F82D2335-FBA2-49E5-B7B7-0A1D7B81BBA9}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{E14CE390-36D9-42D9-8144-E4B1F7161A23} = {E7607C31-F336-4EF2-9294-CBCE30B24334}
+		{D741C4CD-1C89-48E5-9978-DC337F996352} = {E7607C31-F336-4EF2-9294-CBCE30B24334}
+		{6D1BD61D-EE4F-4F56-9D3E-1490992039CB} = {E14CE390-36D9-42D9-8144-E4B1F7161A23}
+		{2172BFBE-A331-44AF-839B-002BDDA3D5C1} = {E14CE390-36D9-42D9-8144-E4B1F7161A23}
+		{C670BFF9-77C9-43C4-8744-E697A78EC50A} = {E14CE390-36D9-42D9-8144-E4B1F7161A23}
+		{F73F2F7E-6169-4B78-A37A-AB419E7FA703} = {C670BFF9-77C9-43C4-8744-E697A78EC50A}
+		{D653B101-9C9D-4E85-8F3C-5C21589B29E9} = {2172BFBE-A331-44AF-839B-002BDDA3D5C1}
+		{F82D2335-FBA2-49E5-B7B7-0A1D7B81BBA9} = {6D1BD61D-EE4F-4F56-9D3E-1490992039CB}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {94A696E4-D266-44CD-866A-6C8B664CDED0}
+	EndGlobalSection
+EndGlobal

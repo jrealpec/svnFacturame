@@ -1,0 +1,257 @@
+/* DASHBOARD */
+
+.dashboard-banners div {
+    background: url(../../images/bg.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: 0 100%;
+    width: 20%;
+    height: 330px;
+    color: #ffffff !important;
+    float: left;
+    text-align: center;
+    font-family: 'Open Sans', sans-serif;
+}
+
+    .dashboard-banners div.gray {
+        background-color: #5a5a5a;
+    }
+
+        .dashboard-banners div.gray a {
+            background-color: #484848;
+        }
+
+            .dashboard-banners div.gray a:after {
+                border-bottom: 5px solid #424242;
+                border-right: 5px solid #424242;
+            }
+
+        .dashboard-banners div.gray span {
+            background-image: url(../../images/icon_correspondencia.png);
+        }
+
+    .dashboard-banners div.yellow {
+        background-color: #ffc657;
+    }
+
+        .dashboard-banners div.yellow a {
+            background-color: #e2ae4b;
+        }
+
+            .dashboard-banners div.yellow a:after {
+                border-bottom: 5px solid #d3a64f;
+                border-right: 5px solid #d3a64f;
+            }
+
+        .dashboard-banners div.yellow span {
+            background-image: url(../../images/icon_ventanilla.png);
+        }
+
+    .dashboard-banners div.blue {
+        background-color: #307ecc;
+    }
+
+        .dashboard-banners div.blue a {
+            background-color: #2665a3;
+        }
+
+        .dashboard-banners div.blue span {
+            background-image: url(../../images/icon_tareas.png);
+        }
+
+        .dashboard-banners div.blue a:after {
+            border-bottom: 5px solid #295d90;
+            border-right: 5px solid #295d90;
+        }
+
+    .dashboard-banners div.green {
+        background-color: #82af6f;
+    }
+
+        .dashboard-banners div.green a {
+            background-color: #688c59;
+        }
+
+            .dashboard-banners div.green a:after {
+                border-bottom: 5px solid #5f7d52;
+                border-right: 5px solid #5f7d52;
+            }
+
+        .dashboard-banners div.green span {
+            background-image: url(../../images/icon_expediente.png);
+        }
+
+    .dashboard-banners div.red {
+        background-color: #d15b47;
+    }
+
+        .dashboard-banners div.red a {
+            background-color: #a74939;
+        }
+
+            .dashboard-banners div.red a:after {
+                border-bottom: 5px solid #934538;
+                border-right: 5px solid #934538;
+            }
+
+        .dashboard-banners div.red span {
+            background-image: url(../../images/icon_prestamos.png);
+        }
+
+    .dashboard-banners div.purple {
+        background-color: #9947d1;
+    }
+
+        .dashboard-banners div.purple a {
+            background-color: #8616d3;
+        }
+
+            .dashboard-banners div.purple a:after {
+                border-bottom: 5px solid #7900cd;
+                border-right: 5px solid #7900cd;
+            }
+
+        .dashboard-banners div.purple span {
+            background-image: url(../../images/icon_comunicados.png);
+        }
+    .dashboard-banners div h3 {
+        font-weight: 300;
+        text-transform: uppercase;
+        font-size: 22px;
+        line-height: 26px;
+        margin: 0;
+        color: #ffffff;
+    }
+
+    .dashboard-banners div,
+    .dashboard-banners div span,
+    .dashboard-banners div a {
+        display: inline-block;
+    }
+
+        .dashboard-banners div span {
+            background-size: contain;
+            width: 136px;
+            height: 144px;
+            margin: 24px 0;
+        }
+
+        .dashboard-banners div a {
+            font-size: 16px;
+            /*padding: 15px 45px 15px 0;*/
+            line-height: 24px;
+            position: relative;
+            height: 25px;
+            width: 55px;
+            color: #ffffff;
+            text-transform: uppercase;
+            text-decoration: none;
+            background-image: url(../../images/icon_arrow.png);
+            background-position: 56px 50%;
+            background-repeat: no-repeat;
+            margin-top: 24px;
+        }
+
+            .dashboard-banners div a:after {
+                content: '';
+                left: 4px;
+                top: 4px;
+                height: 50px;
+                width: 95px;
+                position: absolute;
+                color: #ffffff;
+            }
+
+            .dashboard-banners div a:hover,
+            .dashboard-banners div a:focus,
+            .dashboard-banners div a:visited {
+                opacity: .7;
+            }
+
+
+
+/* Extra Small */
+@media(max-width:767px) {
+
+    .dashboard-banners div {
+        width: 50%;
+        height: auto;
+        padding-bottom: 25px;
+        background-size: 100%;
+    }
+
+        .dashboard-banners div h3 {
+            font-size: 18px;
+            line-height: 22px;
+        }
+
+        .dashboard-banners div a {
+            font-size: 14px;
+            padding: 10px 30px 10px 0;
+            line-height: 20px;
+            height: 20px;
+            width: 50px;
+            background-size: 18px;
+            background-position: 47px 50%;
+            margin-top: 15px;
+        }
+
+            .dashboard-banners div a:after {
+                height: 35px;
+                width: 75px;
+            }
+
+        .dashboard-banners div span {
+            width: 80px;
+            height: 84px;
+            margin: 20px 0 10px;
+        }
+}
+
+
+
+/* Small */
+@media(min-width:767px) and (max-width:991px) {
+
+    .dashboard-banners div {
+        height: 248px;
+    }
+
+        .dashboard-banners div h3 {
+            font-size: 14px;
+            line-height: 18px;
+        }
+
+        .dashboard-banners div a {
+            font-size: 14px;
+            padding: 15px 45px 15px 0;
+            line-height: 20px;
+            height: 20px;
+            width: 45px;
+            background-size: 22px;
+            background-position: 47px 50%;
+            margin-top: 15px;
+        }
+
+            .dashboard-banners div a:after {
+                height: 45px;
+                width: 85px;
+            }
+
+        .dashboard-banners div span {
+            width: 100px;
+            height: 105px;
+            margin: 20px 0 10px;
+        }
+}
+
+
+
+/* Medium */
+@media(min-width:991px) and (max-width:1199px) {
+
+    .dashboard-banners div h3 {
+        font-size: 18px;
+        line-height: 22px;
+    }
+}

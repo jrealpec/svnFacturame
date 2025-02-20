@@ -1,0 +1,62 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.32126.317
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "com.sissi.cloud.frontend.core", "com.sissi.cloud.frontend.core\com.sissi.cloud.frontend.core.csproj", "{C6DE5C8D-3BAE-4A6F-94C6-B887CD90C5A5}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Code", "Code", "{7031762C-2392-4B1A-AB2B-B1BA5F57C786}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Docs", "Docs", "{936BB1C5-3E25-421B-A9B8-AF145FFFB301}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{4F049F96-FCCD-4E4A-8197-B634857356E4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Backend", "Backend", "{E0CF2F52-17E5-42CE-A865-1922C5F4FDA9}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MigrationDB", "MigrationDB", "{A6772F32-77D4-4566-8041-699CBE64E145}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "com.sissi.migratordb", "com.sissi.migratordb\com.sissi.migratordb.csproj", "{BF8FD7E3-4739-4093-9B57-5E513A0E04B6}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Frontend", "Frontend", "{7FBD4A53-D91F-4EBD-86C5-B63F50A6D1E3}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Application", "Application", "{9A76C13D-123B-4328-8ECA-D0A8E0B67ADD}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Domain", "Domain", "{AAA48582-5157-42C8-8993-91585FFD8D2A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infraestructure", "Infraestructure", "{D8444BB5-601F-4B5A-B77D-7E1C4134A707}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Entities", "Entities", "{79316326-DCF0-432D-B6CE-B95C1320EBB4}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C6DE5C8D-3BAE-4A6F-94C6-B887CD90C5A5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C6DE5C8D-3BAE-4A6F-94C6-B887CD90C5A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C6DE5C8D-3BAE-4A6F-94C6-B887CD90C5A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C6DE5C8D-3BAE-4A6F-94C6-B887CD90C5A5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BF8FD7E3-4739-4093-9B57-5E513A0E04B6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BF8FD7E3-4739-4093-9B57-5E513A0E04B6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BF8FD7E3-4739-4093-9B57-5E513A0E04B6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BF8FD7E3-4739-4093-9B57-5E513A0E04B6}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{C6DE5C8D-3BAE-4A6F-94C6-B887CD90C5A5} = {7FBD4A53-D91F-4EBD-86C5-B63F50A6D1E3}
+		{E0CF2F52-17E5-42CE-A865-1922C5F4FDA9} = {7031762C-2392-4B1A-AB2B-B1BA5F57C786}
+		{A6772F32-77D4-4566-8041-699CBE64E145} = {7031762C-2392-4B1A-AB2B-B1BA5F57C786}
+		{BF8FD7E3-4739-4093-9B57-5E513A0E04B6} = {A6772F32-77D4-4566-8041-699CBE64E145}
+		{7FBD4A53-D91F-4EBD-86C5-B63F50A6D1E3} = {7031762C-2392-4B1A-AB2B-B1BA5F57C786}
+		{9A76C13D-123B-4328-8ECA-D0A8E0B67ADD} = {E0CF2F52-17E5-42CE-A865-1922C5F4FDA9}
+		{AAA48582-5157-42C8-8993-91585FFD8D2A} = {E0CF2F52-17E5-42CE-A865-1922C5F4FDA9}
+		{D8444BB5-601F-4B5A-B77D-7E1C4134A707} = {E0CF2F52-17E5-42CE-A865-1922C5F4FDA9}
+		{79316326-DCF0-432D-B6CE-B95C1320EBB4} = {AAA48582-5157-42C8-8993-91585FFD8D2A}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {02E68E82-D3D9-4FC1-91E2-262347F496A5}
+	EndGlobalSection
+EndGlobal

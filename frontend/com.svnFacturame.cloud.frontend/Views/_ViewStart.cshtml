@@ -1,0 +1,19 @@
+﻿@{
+    string CurrentReq = Convert.ToString(Context.Request.HttpContext.Request.RouteValues["Controller"]);
+    dynamic _strlayout;  
+    switch (CurrentReq)  
+    {  
+        // case "Home":
+        //     ////Markup - Home Layout
+        //     _strlayout = "_Layout";
+        //     break;  
+        case "Account":
+            _strlayout = "_LoginLayout";  
+            break;  
+        default:  
+            //General layout
+            _strlayout = "_MarketLayout";
+            break;  
+    }
+    Layout = _strlayout;
+}

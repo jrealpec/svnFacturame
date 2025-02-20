@@ -1,0 +1,379 @@
+﻿@if (User.Identity.IsAuthenticated)
+{
+    @* com.svnFacturame.cloud.frontend.core.ViewModel.MenuViewModel Menu = new com.svnFacturame.cloud.frontend.core.Controllers.Menu.TS000001Controller().getMenu(); *@
+    <div class="sidebar-menu">
+        <div class="sidebar-menu-inner">
+
+        <header class="logo-env">
+
+            <div class="logo">
+                <a href="Default.aspx">
+                    <img src="../Content/img/logoColor.svg" width="120" alt="" />
+                </a>
+            </div>
+
+            <div class="sidebar-collapse">
+                <a href="#" class="sidebar-collapse-icon">
+                    <i class="entypo-menu"></i>
+                </a>
+            </div>
+
+            <div class="sidebar-mobile-menu visible-xs">
+                <a href="#" class="with-animation">
+                        <i class="entypo-menu"></i>
+                </a>
+            </div>
+
+            <div class="sidebar-user-info">
+
+                <div class="sui-normal">
+                    <a href="#" class="user-link">
+                        <img src="../Content/img/Login.jpg" width="55" alt="" class="img-circle" />
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            <span class="title">Bienvenido @User.Identity.Name</span>
+                        }
+                    </a>
+                </div>
+
+                <div class="sui-hover inline-links animate-in">
+                    <a href="#">
+                        <i class="entypo-user"></i>
+                        Profile
+                    </a>
+
+                    <a href="#">
+                        <i class="entypo-lock"></i>
+                        Security
+                    </a>
+                    <asp:LoginStatus ID="LoginStatus2" runat="server" LogoutAction="Redirect" LogoutPageUrl="~/" LogoutText="<i class='entypo-logout'></i> Log out" OnLoggingOut="Unnamed_LoggingOut" />
+
+                    <span class="close-sui-popup">&times;</span>
+                </div>
+
+            </div>
+
+        </header>
+@*         <div>
+                <ul id="main-menu" class="main-menu">
+                    @for (int i = 0; i < Menu.elements.Count(); i++)
+                    {
+                        <li class="has-sub">
+                            <a href="#">
+                                <i class="fas fa-shopping-basket fa-fw"></i>
+                                <span class="title">@Menu.elements[i].Des_Modulo.ToString()</span>
+                            </a>
+                            <ul>
+                                @for (int j = 0; j < Menu.elements[i].children.Count(); j++)
+                                {
+                                    <li>
+                                        <a href="/@Menu.elements[i].children[j].Controller_Name/@Menu.elements[i].children[j].Action_Name">
+                                            <span class="title">@Menu.elements[i].children[j].Des_Modulo</span>
+                                        </a>
+                                    </li>
+                                }
+                            </ul>
+                        </li>
+
+                    }
+                </ul>
+        </div> *@
+@*         <div>
+            <ul id="main-menu" class="main-menu">
+                <li>
+                    <a href="#">
+                        <i class="fas fa-home fa-fw"></i>
+                        <span class="title">Dashboard</span>
+                    </a>
+                </li>
+                @{
+                    foreach (var item in Menu.Where(s => s.Cod_NPadre == 0).GroupBy(obj => new { obj.Nivel }).Distinct().ToList())
+                    {
+                        <li class="has-sub">
+                            <a href="#">
+                                <i class="fas fa-shopping-basket fa-fw"></i>
+                                <span class="title">@item.FirstOrDefault().Des_Modulo</span>
+                            </a>
+                        </li>
+                        <ul>
+                            @{
+                                foreach (var firstItem in (Model.Where(s => s.Cod_NPadre == item.FirstOrDefault().Nivel).ToList()))
+                                {
+                                 <li>
+                                        <a href="#">
+                                            <span class="title"> @firstItem.Des_Modulo</span>
+                                        </a>
+                                        <ul>
+                                            @foreach (var secondItem in (Model.Where(s => s.Cod_NPadre == firstItem.Nivel).ToList()))
+                                            {
+                                                <li>
+                                                    <a href="/@secondItem.Controller_Name/@secondItem.Action_Name">
+                                                        <span class="title">@secondItem.Des_Modulo</span>
+                                                    </a>
+                                                </li>
+                                            }
+                                        </ul>
+                                    </li>   
+                                }
+                              }
+                        </ul>
+                    }
+                }
+            </ul>
+        </div> *@
+        <div>
+           <ul id="main-menu" class="main-menu">
+            <li>
+                <a href="#">
+                    <i class="fas fa-home fa-fw"></i>
+                    <span class="title">Dashboard</span>
+                </a>
+            </li>
+            <li class="has-sub">
+                    <a href="#">
+                        <i class="fas fa-shopping-basket fa-fw"></i>
+                        <span class="title">Parametros</span>
+                    </a>
+                    <ul>
+                        <li>
+                            <a href="#">
+                                <span class="title">Basicos</span>
+                            </a>
+                                <ul>
+                                    <li>
+                                    <a href="../TG000001">
+                                            <span class="title">Bancos</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                                <ul>
+                                    <li>
+                                        <a href="#">
+                                            <span class="title">Profesiones</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                                <ul>
+                                    <li>
+                                        <a href="#">
+                                            <span class="title">Actividades laborales</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                                <ul>
+                                    <li>
+                                        <a href="#">
+                                            <span class="title">Parentesco</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                                <ul>
+                                    <li>
+                                        <a href="#">
+                                            <span class="title">Zonas</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                                <ul>
+                                    <li>
+                                        <a href="#">
+                                            <span class="title">Salario minimo</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                                <ul>
+                                    <li>
+                                        <a href="../TG000003">
+                                            <span class="title">Empresas afiliadas</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                                <ul>
+                                    <li>
+                                        <a href="../TG000004">
+                                            <span class="title">Departamentos</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                                <ul>
+                                    <li>
+                                    <a href="../TG000002">
+                                            <span class="title">Ciudades</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                                <ul>
+                                    <li>
+                                        <a href="#">
+                                            <span class="title">Sexos</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                                <ul>
+                                    <li>
+                                        <a href="#">
+                                            <span class="title">Tipo de identificacion</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                                <ul>
+                                    <li>
+                                        <a href="#">
+                                            <span class="title">Tipo de salarios</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                                <ul>
+                                    <li>
+                                        <a href="#">
+                                            <span class="title">Cargos</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                                <ul>
+                                    <li>
+                                        <a href="#">
+                                            <span class="title">Estados civiles</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                                <ul>
+                                    <li>
+                                        <a href="#">
+                                            <span class="title">Estados generales</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                        </li>
+                    </ul>
+                    <ul>
+                        <li>
+                            <a href="#">
+                                <span class="title">Seguridad Social</span>
+                            </a>
+                                <ul>
+                                    <li>
+                                        <a href="#">
+                                            <span class="title">Tipo de planillas</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                                <ul>
+                                    <li>
+                                        <a href="#">
+                                            <span class="title">Tipo de cotizantes</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                                <ul>
+                                    <li>
+                                        <a href="#">
+                                            <span class="title">Subtipos de cotizantes</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                                <ul>
+                                    <li>
+                                        <a href="#">
+                                            <span class="title">Operadores de pago</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                        </li>
+                    </ul>
+                    <ul>
+                        <li>
+                            <a href="#">
+                                <span class="title">Administrativos</span>
+                            </a>
+                                <ul>
+                                    <li>
+                                        <a href="#">
+                                            <span class="title">Entidad eps</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                                <ul>
+                                    <li>
+                                        <a href="#">
+                                            <span class="title">Administradores arl</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                                <ul>
+                                    <li>
+                                        <a href="#">
+                                            <span class="title">Administradores afp</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                                <ul>
+                                    <li>
+                                        <a href="#">
+                                            <span class="title">Cajas de compensación</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                                <ul>
+                                    <li>
+                                        <a href="#">
+                                            <span class="title">Registro de cotizantes</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                        </li>
+                    </ul>
+            </li>
+
+            <li class="has-sub">
+                <a href="#">
+                    <i class="fas fa-tools fa-fw"></i>
+                    <span class="title">Gestion de Incapacidades</span>
+                </a>
+                <ul>
+                    <li>
+                        <a href="../TR000010/Create">
+                            <span class="title">Radicacion documentos Individual</span>
+                        </a>
+                    </li>
+                </ul>
+                <ul>
+                    <li>
+                        <a href="#">
+                            <span class="title">Cargue masivo de documentos</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li class="has-sub">
+                <a href="#">
+                    <i class="fas fa-ambulance fa-fw"></i>
+                    <span class="title">Trámites</span>
+                </a>
+                <ul>
+                    <li>
+                        <a href="#">
+                            <span class="title">Radicacion documentos a Entidad</span>
+                        </a>
+                    </li>
+                </ul>
+                <ul>
+                    <li>
+                        <a href="#">
+                            <span class="title">Conciliacion con reporte</span>
+                        </a>
+                    </li>
+                </ul>
+                <ul>
+                    <li>
+                        <a href="#">
+                            <span class="title">Ingreso de novedades</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+        </div>
+    </div>
+ </div>
+}

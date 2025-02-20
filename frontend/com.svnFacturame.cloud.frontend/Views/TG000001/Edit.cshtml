@@ -1,0 +1,44 @@
+﻿@using com.svnFacturame.cloud.frontend.core.Controllers
+@model com.svnFacturame.cloud.frontend.core.Models.TR000010
+@{
+    ViewData["Title"] = "Edit";
+}
+<ol class="breadcrumb">
+    <li class="active"><i class="fas fa-home fa-fw"></i>@Convert.ToString(string.Format("{0:MMMM dd, yyyy}", DateTime.Now.ToUniversalTime().AddHours(-5)))</li>
+</ol>
+<hr />
+<div class="row">
+        <div class="col-md-4">
+            <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="CodBanco" class="control-label"></label>
+                <input asp-for="CodBanco" class="form-control" readonly="true" />
+                <span asp-validation-for="CodBanco" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.Status, htmlAttributes: new { @class = "control-label col-md-2" })
+                Activo
+                @Html.RadioButtonFor(m => m.Status, true, new { @id = "Status", htmlAttributes = new { @class = "form-control" } })
+                Inactivo
+                @Html.RadioButtonFor(m => m.Status, false, new { @id = "Status", htmlAttributes = new { @class = "form-control" } })
+                <span asp-validation-for="Status" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Edit" class="btn btn-primary" />
+            </div>
+            </form>
+        </div>
+</div>
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

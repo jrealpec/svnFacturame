@@ -1,0 +1,88 @@
+﻿@using com.svnFacturame.cloud.frontend.core.Controllers
+@model com.svnFacturame.cloud.frontend.core.Models.TG000002
+@{
+    ViewData["Title"] = "Create";
+}
+<ol class="breadcrumb">
+    <li class="active"><i class="fas fa-home fa-fw"></i>@Convert.ToString(string.Format("{0:MMMM dd, yyyy}", DateTime.Now.ToUniversalTime().AddHours(-5)))</li>
+</ol>
+<hr />
+<script type="text/javascript" src="@Url.Content("~/")assets/js2/jquery-placeholder/jquery.placeholder.min.js"></script>
+<script type="text/javascript" src="@Url.Content("~/")assets/js2/jquery-validation/js/jquery.validate.min.js"></script>
+<script type="text/javascript" src="@Url.Content("~/")assets/js2/jquery-form/jquery.form.js"></script>
+<script type="text/javascript" src="@Url.Content("~/")assets/js2/bootstrap-wysiwyg/js/bootstrap-wysiwyg.js"></script>
+<script type="text/javascript" src="@Url.Content("~/")assets/js2/jquery-hotkeys/jquery.hotkeys.js"></script>
+
+<div class="row">
+        <div class="col-md-4">
+            <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="CodCiudad" class="control-label"></label>
+                <input asp-for="CodCiudad" class="form-control" />
+                <span asp-validation-for="CodCiudad" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IdDeptoCiud" class="control-label">Departamento</label>
+                @Html.DropDownList("IdDeptoCiud", new SelectList(ViewBag.lstTG000004, "Id", "Name"))
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.Status, htmlAttributes: new { @class = "control-label col-md-2" })
+                Activo
+                @Html.RadioButtonFor(m => m.Status, true, new { @id = "Status", htmlAttributes = new { @class = "form-control" } })
+                Inactivo
+                @Html.RadioButtonFor(m => m.Status, false, new { @id = "Status", htmlAttributes = new { @class = "form-control" } })
+                <span asp-validation-for="Status" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+            </form>
+        </div>
+</div>
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+<script type="text/javascript">
+    function LimpiarCombo(nombre) {
+        var select = $(nombre);
+        select.empty();
+        select.append($('<option/>', {
+            value: 0,
+            text: "--Seleccione --"
+        }));
+        select.prop('disabled', 'disabled');
+        select.trigger("chosen:updated");
+        select.chosen({});
+    }
+    function DeshabilitarCombo(nombre) {
+        var select = $(nombre);
+        select.prop('disabled', 'disabled');
+        select.trigger("chosen:updated");
+        $(nombre + " option[value=0]").attr("selected", "selected");
+        select.chosen({});
+    }
+    function HabilitarCombo(nombre) {
+        var select = $(nombre);
+        var valor = $(nombre + " option:selected").val();
+        var valor1 = $(nombre).val();
+        var valor2 = $(nombre + " option:selected").text();
+        var valor3 = document.getElementById('dllTemas').value;
+        select.attr('disabled', false);
+        select.trigger("chosen:updated");
+        select.chosen({});
+        if (valor > 0) {
+            select.val(valor);
+            select.trigger("chosen:updated");
+        }
+    }
+</script>

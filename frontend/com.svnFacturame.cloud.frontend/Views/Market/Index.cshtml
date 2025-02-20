@@ -1,0 +1,381 @@
+﻿<CoffeeProducts>
+    @{
+        ViewData["Title"] = "La Meseta -*Dashboard*-";
+    }
+
+    <ol class="breadcrumb">
+        <li class="active"><i class="fas fa-home fa-fw"></i>Dashboard</li>
+    </ol>
+
+    <div class="col-sm-12">
+        <div class="well">
+            <h1>
+                @Convert.ToString(string.Format("{0:MMMM dd, yyyy}", DateTime.Now.ToUniversalTime().AddHours(-5)))
+            </h1>
+            <h3>
+                Welcome to <strong>La Meseta Coffee Trading</strong>
+            </h3>
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="col-sm-9">
+
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <div class="panel-title">
+                            <h4>
+                                Price chart
+                                <br />
+                                <small>La Meseta Colombian Coffee</small>
+                            </h4>
+                        </div>
+
+                        <div class="panel-options">
+                            <button id="btnStock" type="button" class="bg">
+                                <i class="entypo-calendar"></i> Filter
+                            </button>
+                            <a href="#" data-rel="collapse"><i class="entypo-down-open"></i></a>
+                        </div>
+                    </div>
+
+                    <div class="panel-body no-padding">
+                        <div class="col-md-12">
+                            <div class="card-primary card-outline">
+                                <div class="card-body">
+                                    <div id="chart" style="width:100%; height:800px">
+                                        <div id="candlestick" style="height:55%"></div>
+                                        <div id="volume" style="height:30%;margin-top:-1%"></div>
+                                        <div id="filter" style="height:15%;margin-top:1%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="row">
+
+                    <div class="col-sm-6">
+
+                        <div class="tile-block tile-green" id="todo_tasks">
+
+                            <div class="tile-header">
+                                <i class="entypo-target"></i>
+
+                                <a href="#">
+                                    Hire our robot for free!
+                                    <span>Set up your desired price and when the market hits the tag, our robot will buy for you.</span>
+                                </a>
+                            </div>
+
+                            <div class="tile-content">
+                                <label for="tbDesiredPrice">Your desired price tag:</label>
+                                <input inputmode="numeric" class="form-control" placeholder="25" id="tbDesiredPrice" />
+
+                                <br /><br />
+                                <label for="tbDesiredBags">How many bags do you want to buy?</label>
+                                <input inputmode="numeric" class="form-control" placeholder="10" id="tbDesiredBags" />
+
+                                <br /><br />
+                                <label for="dlCoffeeRobot">What brand of Coffee do you want? </label>
+                                <select class="form-control" id="dlCoffeeRobot">
+                                    <option>Huila Excelso</option>
+                                </select>
+
+                            </div>
+
+                            <div class="tile-footer">
+                                <button id="btnHireRobot" class="btn btn-white btn-icon btn-block">Continue <i class="entypo-right-bold"></i></button>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="panel panel-dark" data-collapsed="0">
+
+                            <div class="panel-heading">
+                                <div class="panel-title">Huila Excelso</div>
+
+                                <div class="panel-options">
+                                    <a href="#" data-rel="collapse"><i class="entypo-down-open"></i></a>
+                                </div>
+                            </div>
+
+                            <div class="panel-body">
+                                <div class="row">
+                                    <img src="https://mesetamvp.grupoconcepto.co/Content/img/coffee-brands/narino-excelso-color.svg" />
+                                </div>
+                                <div class="col-sm-12 text-center">
+                                    <a href="#" class="btn btn-black btn-icon">
+                                        More info <i class="entypo-info-circled"></i>
+                                    </a>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <ul class="pager">
+                            <li class="previous">
+                                <a href="#"><i class="entypo-left-thin"></i></a>
+                            </li>
+                            <li class="next">
+                                <a href="#"><i class="entypo-right-thin"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-3">
+
+                <div class="tile-progress tile-red">
+                    <div class="tile-header">
+                        <h3>Your Company</h3>
+                        <span>Please enter your company information.</span>
+                    </div>
+
+                    <div class="tile-progressbar">
+                        <span data-fill="70%"></span>
+                    </div>
+
+                    <div class="tile-footer">
+                        <h4>
+                            <span class="pct-counter">0</span>% progress
+                        </h4>
+
+                        <span>your account is almost complete!</span>
+                        <br />
+                        <br />
+                        <a href="company-info.aspx" class="btn btn-green btn-icon">Complete <i class="entypo-right-thin"></i></a>
+                    </div>
+                </div>
+
+                @foreach (var item in Model)
+                {
+                    <div class="panel panel-info" data-collapsed="0">
+                        <div class="panel-heading">
+                            <div class="panel-title"><i class="fas fa-coffee fa-fw"></i> @item.MarcaShort</div>
+
+                            <div class="panel-options">
+                                <a href="#" data-rel="collapse"><i class="entypo-down-open"></i></a>
+                            </div>
+                        </div>
+                        <div class="panel-body">
+                            <div class="col-sm-12">
+                                <div class="label label-info"><i class="fas fa-dollar-sign fa-fw"></i>Current price per bag</div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <img src="@item.Logo" />
+                                </div>
+                                <div class="col-sm-9">
+                                    <h1 class="text-right">$3.26</h1>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-3">
+
+                                </div>
+                                <div class="col-sm-9">
+                                    <div class="text-right">
+                                        <div class="text-success"><i class="fas fa-arrow-up"></i> $0.65 (.26%)</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="Spacer20"></div>
+                            </div>
+                            <div class="col-sm-12">
+                                <div class="text-right">
+                                    <a class="btn btn-block btn-green btn-icon" href="#">
+                                        Add to cart <i class="entypo-basket"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xs-10">
+        <div class="modal fade" id="stock">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">
+                            x
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <div class="form-group">
+                                <div class="card card-primary card-outline">
+                                    <div class="card-header">
+                                        <h4 class="modal-title">
+                                            You can change your dates preferences:
+                                        </h4>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="row form-group form-inline" style="margin-top:5px">
+                                            <div class="col-sm-4">
+                                                <input id="ticker" type="hidden" class="form-control input-sm" style="height:25px;width:100%" value="KC=F" />
+                                            </div>
+                                        </div>
+                                        <div class="row form-group form-inline" style="margin-top:-5px">
+                                            <label class="col-sm-5 control-label" for="startDate">Start Date:</label>
+                                            <div class="col-sm-4">
+                                                <input id="startDate" type="text" class="form-control input-sm" style="height:25px;width:100%" value=@DateTime.Now.AddMonths(-3).ToString("yyyy-MM-dd") />
+                                            </div>
+                                        </div>
+                                        <div class="row form-group form-inline" style="margin-top:-5px">
+                                            <label class="col-sm-5 control-label" for="endDate">End Date:</label>
+                                            <div class="col-sm-4">
+                                                <input id="endDate" type="text" class="form-control input-sm" style="height:25px;width:100%" value=@DateTime.Now.ToString("yyyy-MM-dd") />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card-footer">
+                                        <div class="row form-group form-inline" style="margin-top:20px">
+                                            <div class="col-sm-6"></div>
+                                            <div class="col-sm-offset-6">
+                                                <button id="btnCreateChart" type="submit" class="btn btn-primary">Search</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    @section scripts
+
+    {
+        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+        <script>
+            //if (Page.IsPostBack.ToString().ToLower()) {
+            //Fuente: https://www.iteramos.com/pregunta/54376/como-puedo-comprobar-para-ispostback-en-javascript
+            createStockChart();
+            //}
+            $(document).ready(function () {
+                $("#btnStock").click(function () {
+                    $("#stock").modal('show');
+                });
+
+                //$("#btnHideChart").click(function () {
+                //    $("#stock").modal('hide');
+                //})
+            });
+
+            $('#btnCreateChart').click(function () {
+                createStockChart();
+            });
+            function createStockChart() {
+                google.charts.load('current', { 'packages': ['corechart', 'controls'] });
+                google.charts.setOnLoadCallback(drawChart);
+                var chart_div = document.getElementById('chart');
+                var ticker = document.getElementById('ticker').value;
+                var startDate = document.getElementById('startDate').value;
+                var endDate = document.getElementById('endDate').value;
+
+                var viewStartDate = (new Date(endDate));
+                viewStartDate.setMonth(viewStartDate.getMonth() - 3);
+                var viewEndDate = new Date(endDate);
+
+                function drawChart() {
+                    var data = new google.visualization.DataTable();
+                    data.addColumn('datetime', 'Date');
+                    data.addColumn('number', 'Open');
+                    data.addColumn('number', 'High');
+                    data.addColumn('number', 'Low');
+                    data.addColumn('number', 'Close');
+                    data.addColumn('number', 'Volume');
+
+                    $.ajax({
+                        url: '/api/ApiStockData/' + ticker + '/' + startDate + '/' + endDate + '/daily',
+                        method: 'GET',
+                        dataType: 'json'
+                    }).done(function (d) {
+                        d.forEach(function (di) {
+                            data.addRow([{ v: new Date(di.date), f: di.date }, di.open, di.high, di.low, di.close, di.volume]);
+                        });
+
+                        var dashboard = new google.visualization.Dashboard(chart_div);
+                        var control = new google.visualization.ControlWrapper({
+                            controlType: 'ChartRangeFilter',
+                            containerId: 'filter',
+                            options: {
+                                filterColumnIndex: 0,
+                                ui: {
+                                    chartType: 'LineChart',
+                                    chartOptions: {
+                                        chartArea: {
+                                            height: '80%', width: '85%', left: 100,
+                                            backgroundColor: { stroke: "gray", strokeWidth: 1 }
+                                        },
+                                        hAxis: { baselineColor: 'none' }
+                                    },
+                                    chartView: { columns: [0, 4] },
+                                }
+                            },
+                            state: {
+                                range: {
+                                    start: viewStartDate,
+                                    end: viewEndDate
+                                }
+                            }
+                        });
+
+                        var chart = new google.visualization.ChartWrapper({
+                            chartType: 'CandlestickChart',
+                            containerId: 'candlestick',
+                            options: {
+                                chartArea: { height: '80%', width: '85%', left: 100, backgroundColor: { stroke: "gray", strokeWidth: 1 } },
+                                hAxis: { type: 'category', slantedText: false, maxTextLines: 1, maxAlternation: 1 },
+                                legend: { position: 'none' },
+                                candlestick: {
+                                    fallingColor: { strokeWidth: 0, fill: '#a52714' },
+                                    risingColor: { strokeWidth: 0, fill: '#0f9d58' }
+                                },
+                                title: 'Stock Price: ' + ticker,
+                            },
+                            view: { columns: [0, 3, 1, 4, 2] }
+                        });
+
+                        var volume = new google.visualization.ChartWrapper({
+                            chartType: 'ColumnChart',
+                            containerId: 'volume',
+                            options: {
+                                chartArea: { height: '80%', width: '85%', left: 100, top: 40, bottom: 30, backgroundColor: { stroke: "gray", strokeWidth: 1 } },
+                                hAxis: { type: 'category', slantedText: false, maxTextLines: 1, maxAlternation: 1 },
+                                legend: { position: 'none' },
+                                title: "Volume: " + ticker
+                            },
+                            view: { columns: [0, 5] }
+                        });
+
+                        dashboard.bind(control, [chart, volume]);
+                        dashboard.draw(data);
+
+                    }).fail(function () {
+                        alert('Failed to create the chart. Please try it again.');
+                    });
+                }
+            }
+        </script>
+
+    }
+
