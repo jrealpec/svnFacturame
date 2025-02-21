@@ -23,6 +23,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "com.svnFacturame.cloud.infr
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "com.svnFacturame.cloud.Api", "backend\com.svnFacturame.cloud.Api\com.svnFacturame.cloud.Api\com.svnFacturame.cloud.Api.csproj", "{F82D2335-FBA2-49E5-B7B7-0A1D7B81BBA9}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "com.svnFacturame.cloud.frontend", "frontend\com.svnFacturame.cloud.frontend\com.svnFacturame.cloud.frontend.csproj", "{ECADB38C-5FC1-41F5-8863-A85005C8BD15}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -41,6 +43,10 @@ Global
 		{F82D2335-FBA2-49E5-B7B7-0A1D7B81BBA9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F82D2335-FBA2-49E5-B7B7-0A1D7B81BBA9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F82D2335-FBA2-49E5-B7B7-0A1D7B81BBA9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ECADB38C-5FC1-41F5-8863-A85005C8BD15}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ECADB38C-5FC1-41F5-8863-A85005C8BD15}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ECADB38C-5FC1-41F5-8863-A85005C8BD15}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ECADB38C-5FC1-41F5-8863-A85005C8BD15}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -54,6 +60,7 @@ Global
 		{F73F2F7E-6169-4B78-A37A-AB419E7FA703} = {C670BFF9-77C9-43C4-8744-E697A78EC50A}
 		{D653B101-9C9D-4E85-8F3C-5C21589B29E9} = {2172BFBE-A331-44AF-839B-002BDDA3D5C1}
 		{F82D2335-FBA2-49E5-B7B7-0A1D7B81BBA9} = {6D1BD61D-EE4F-4F56-9D3E-1490992039CB}
+		{ECADB38C-5FC1-41F5-8863-A85005C8BD15} = {D741C4CD-1C89-48E5-9978-DC337F996352}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {94A696E4-D266-44CD-866A-6C8B664CDED0}

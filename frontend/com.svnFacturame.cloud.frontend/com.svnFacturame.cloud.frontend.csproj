@@ -25,7 +25,6 @@
 
   <ItemGroup>
     <Folder Include="Controllers\CIE10\" />
-    <Folder Include="Controllers\Facturas\" />
   </ItemGroup>
 
 </Project>

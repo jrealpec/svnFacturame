@@ -28,7 +28,7 @@
 
                 <div class="sui-normal">
                     <a href="#" class="user-link">
-                        <img src="../Content/img/Login.jpg" width="55" alt="" class="img-circle" />
+                        <img src="../Content/img/person_zone.png" width="55" alt="" class="img-circle" />
                         @if (User.Identity.IsAuthenticated)
                         {
                             <span class="title">Bienvenido @User.Identity.Name</span>
@@ -148,50 +148,8 @@
                                 </ul>
                                 <ul>
                                     <li>
-                                        <a href="#">
-                                            <span class="title">Profesiones</span>
-                                        </a>
-                                    </li>
-                                </ul>
-                                <ul>
-                                    <li>
-                                        <a href="#">
-                                            <span class="title">Actividades laborales</span>
-                                        </a>
-                                    </li>
-                                </ul>
-                                <ul>
-                                    <li>
-                                        <a href="#">
-                                            <span class="title">Parentesco</span>
-                                        </a>
-                                    </li>
-                                </ul>
-                                <ul>
-                                    <li>
-                                        <a href="#">
-                                            <span class="title">Zonas</span>
-                                        </a>
-                                    </li>
-                                </ul>
-                                <ul>
-                                    <li>
-                                        <a href="#">
-                                            <span class="title">Salario minimo</span>
-                                        </a>
-                                    </li>
-                                </ul>
-                                <ul>
-                                    <li>
                                         <a href="../TG000003">
                                             <span class="title">Empresas afiliadas</span>
-                                        </a>
-                                    </li>
-                                </ul>
-                                <ul>
-                                    <li>
-                                        <a href="../TG000004">
-                                            <span class="title">Departamentos</span>
                                         </a>
                                     </li>
                                 </ul>
@@ -204,49 +162,14 @@
                                 </ul>
                                 <ul>
                                     <li>
-                                        <a href="#">
-                                            <span class="title">Sexos</span>
-                                        </a>
-                                    </li>
-                                </ul>
-                                <ul>
-                                    <li>
-                                        <a href="#">
-                                            <span class="title">Tipo de identificacion</span>
-                                        </a>
-                                    </li>
-                                </ul>
-                                <ul>
-                                    <li>
-                                        <a href="#">
-                                            <span class="title">Tipo de salarios</span>
-                                        </a>
-                                    </li>
-                                </ul>
-                                <ul>
-                                    <li>
-                                        <a href="#">
-                                            <span class="title">Cargos</span>
-                                        </a>
-                                    </li>
-                                </ul>
-                                <ul>
-                                    <li>
-                                        <a href="#">
-                                            <span class="title">Estados civiles</span>
-                                        </a>
-                                    </li>
-                                </ul>
-                                <ul>
-                                    <li>
-                                        <a href="#">
-                                            <span class="title">Estados generales</span>
+                                        <a href="../TG000004">
+                                            <span class="title">Departamentos</span>
                                         </a>
                                     </li>
                                 </ul>
                         </li>
                     </ul>
-                    <ul>
+@*                     <ul>
                         <li>
                             <a href="#">
                                 <span class="title">Seguridad Social</span>
@@ -322,21 +245,14 @@
                                     </li>
                                 </ul>
                         </li>
-                    </ul>
+                    </ul> *@
             </li>
-
+@* 
             <li class="has-sub">
                 <a href="#">
                     <i class="fas fa-tools fa-fw"></i>
                     <span class="title">Gestion de Incapacidades</span>
                 </a>
-                <ul>
-                    <li>
-                        <a href="../TR000010/Create">
-                            <span class="title">Radicacion documentos Individual</span>
-                        </a>
-                    </li>
-                </ul>
                 <ul>
                     <li>
                         <a href="#">
@@ -372,7 +288,21 @@
                     </li>
                 </ul>
             </li>
-        </ul>
+ *@
+                    <li class="has-sub">
+                        <a href="#">
+                            <i class="fas fa-ambulance fa-fw"></i>
+                            <span class="title">Transacciones</span>
+                        </a>
+                        <ul>
+                            <li>
+                                <a href="../TR000020">
+                                    <span class="title">Facturame!</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
         </div>
     </div>
  </div>

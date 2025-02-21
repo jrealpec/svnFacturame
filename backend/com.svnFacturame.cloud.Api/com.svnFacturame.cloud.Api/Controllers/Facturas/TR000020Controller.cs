@@ -38,6 +38,20 @@ namespace com.svnFacturame.cloud.Api.Controllers.Facturas
         {
             return await _context.TR000020.ToListAsync();
         }
+        // GET: BANCOS/1
+        [HttpGet("{id}")]
+        public async Task<ActionResult<TR000020>> GetTR000020(int id)
+        {
+            var _TR000020 = await _context.TR000020.FindAsync(id);
+
+            if (_TR000020 == null)
+            {
+                return NotFound();
+            }
+
+            return _TR000020;
+        }
+
         [HttpPost]
         public async Task<ActionResult<TR000020>> PostTR000020(TR000020 _TR000020)
         {
@@ -56,12 +70,9 @@ namespace com.svnFacturame.cloud.Api.Controllers.Facturas
                 return BadRequest();
             }
 
-            _TR000020.Numero = _TR000020Edit.Numero;
-            _TR000020.NumeroDoc = _TR000020Edit.NumeroDoc;
             _TR000020.Nombre = _TR000020Edit.Nombre;
             _TR000020.Monto = _TR000020Edit.Monto;
             _TR000020.Status = _TR000020Edit.Status;
-            _TR000020.Visible = _TR000020Edit.Visible;
 
             _context.TR000020.Update(_TR000020);
             _context.Entry(_TR000020).State = EntityState.Modified;
@@ -83,6 +94,23 @@ namespace com.svnFacturame.cloud.Api.Controllers.Facturas
             }
             return NoContent();
         }
+
+        [HttpDelete("{id}")]
+        public async Task<ActionResult<TR000020>> DeleteTR000020(int id)
+        {
+            var _TR000020 = await _context.TR000020.FindAsync(id);
+
+            if (_TR000020 == null)
+            {
+                return NotFound();
+            }
+
+            _context.TR000020.Remove(_TR000020);
+            await _context.SaveChangesAsync();
+
+            return _TR000020;
+        }
+
         private bool TR000020Exists(int id)
         {
             return _context.TR000020.Any(e => e.Id == id);

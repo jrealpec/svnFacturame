@@ -17,7 +17,7 @@ namespace com.svnFacturame.cloud.frontend.core.Controllers.Bancos
 
         public TG000001Controller()
         {
-            tg00001Api.BaseAddress = new Uri("http://localhost:44314");
+            tg00001Api.BaseAddress = new Uri("http://localhost:10263");
         }
 
         //GET TG000001
