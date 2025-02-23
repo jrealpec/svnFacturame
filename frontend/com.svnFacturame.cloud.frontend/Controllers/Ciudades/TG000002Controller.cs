@@ -48,10 +48,10 @@ namespace com.svnFacturame.cloud.frontend.core.Controllers.Ciudades
             try
             {
                 // TODO: Add insert logic here
-                if (User.Identity.IsAuthenticated){
-                   var _user= _userManager.FindByEmailAsync(User.Identity.Name.ToString());
-                }
-                newTG000002.CreationDate = DateTime.Now;
+                //if (User.Identity.IsAuthenticated){
+                //   var _user= _userManager.FindByEmailAsync(User.Identity.Name.ToString());
+                //}
+                //newTG000002.CreationDate = DateTime.Now;
                 newTG000002.UpdateDate = null;
                 string newuserdata = JsonConvert.SerializeObject(newTG000002);
                 var TG000002data = new StringContent(newuserdata, System.Text.Encoding.UTF8, "application/Json");
@@ -68,10 +68,10 @@ namespace com.svnFacturame.cloud.frontend.core.Controllers.Ciudades
         {
             List<TG000004> TG000004List = this.cargarDepto();
             ViewBag.lstTG000004 = TG000004List;
-            if (User.Identity.IsAuthenticated)
-            {
-                var _user = _signInManager.UserManager.FindByEmailAsync(User.Identity.Name.ToString());
-            }
+            //if (User.Identity.IsAuthenticated)
+            //{
+            //    var _user = _signInManager.UserManager.FindByEmailAsync(User.Identity.Name.ToString());
+            //}
             HttpResponseMessage apiresponse = tg00002Api.GetAsync("/api/TG000002/" + id).Result;
             string _TG000002data = apiresponse.Content.ReadAsStringAsync().Result;
             TG000002 _TG000002toedit = JsonConvert.DeserializeObject<TG000002>(_TG000002data);

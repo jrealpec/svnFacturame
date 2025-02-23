@@ -13,7 +13,7 @@ namespace com.svnFacturame.cloud.domain.DTO.Departamentos
         public bool? Status { get; set; }
         public bool? Visible { get; set; }
         public int? CreatedBy { get; set; }
-        public DateTime CreationDate { get; set; }
+        public DateTime? CreationDate { get; set; }
         public int? UpdateBy { get; set; }
         public DateTime? UpdateDate { get; set; }
         public List<TG000002> _TG000002 { get; set; } = new List<TG000002>();
