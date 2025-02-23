@@ -1,0 +1,37 @@
+﻿@using com.svnFacturame.cloud.frontend.core.Controllers
+@model com.svnFacturame.cloud.frontend.core.Models.TG000004
+@{
+    ViewData["Title"] = "Delete";
+}
+<ol class="breadcrumb">
+    <li class="active"><i class="fas fa-home fa-fw"></i>@Convert.ToString(string.Format("{0:MMMM dd, yyyy}", DateTime.Now.ToUniversalTime().AddHours(-5)))</li>
+</ol>
+<hr />
+<h3>Are you sure you want to delete this?</h3>
+<div class="row">
+        <div class="col-md-4">
+            <form asp-action="Delete">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="CodDepto" class="control-label"></label>
+                <input asp-for="CodDepto" class="form-control" readonly="true" />
+                <span asp-validation-for="CodDepto" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" readonly="true"  />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Delete" class="btn btn-primary" />
+            </div>
+            </form>
+        </div>
+</div>
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
